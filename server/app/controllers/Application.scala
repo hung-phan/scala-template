@@ -1,12 +1,12 @@
 package controllers
 
 import com.google.inject.Inject
-import play.api.Environment
 import play.api.mvc._
+import play.api.{Configuration, Environment}
 import shared.SharedMessages
 
-class Application @Inject()(environment: Environment) extends Controller {
+class Application @Inject()(environment: Environment, configuration: Configuration) extends Controller {
   def index = Action {
-    Ok(views.html.index(environment)(SharedMessages.itWorks))
+    Ok(views.html.index(environment, configuration)(SharedMessages.itWorks))
   }
 }

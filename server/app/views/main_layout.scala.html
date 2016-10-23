@@ -1,4 +1,4 @@
-@(environment: play.api.Environment)(title: String)(content: Html)
+@(environment: play.api.Environment, configuration: play.api.Configuration)(title: String)(content: Html)
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
         )
 
         @if(environment.mode == play.api.Mode.Dev) {
-            <script type="application/javascript" src="http://localhost:12345/workbench.js"></script>
+            <script type="application/javascript" src="@configuration.underlying.getString("workbench")"></script>
         }
     </body>
 </html>
