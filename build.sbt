@@ -7,6 +7,23 @@ lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
 lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
 
+lazy val client = (project in file("client"))
+  .settings(workbenchSettings: _*)
+  .settings(
+    bootSnippet := "example.ScalaJSExample().main();",
+    updateBrowsers <<= updateBrowsers.triggeredBy(fastOptJS in Compile)
+  )
+  .settings(
+    scalaVersion := scalaV,
+    persistLauncher := true,
+    persistLauncher in Test := false,
+    libraryDependencies ++= Seq(
+      "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+    )
+  )
+  .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
+  .dependsOn(sharedJs)
+
 lazy val server = (project in file("server"))
   .settings(
     scalaVersion := scalaV,
@@ -24,21 +41,6 @@ lazy val server = (project in file("server"))
   )
   .enablePlugins(PlayScala)
   .dependsOn(sharedJvm)
-
-lazy val client = (project in file("client"))
-  .settings(workbenchSettings: _*)
-  .settings(
-    scalaVersion := scalaV,
-    persistLauncher := true,
-    persistLauncher in Test := false,
-    bootSnippet := "example.ScalaJSExample().main();",
-    updateBrowsers <<= updateBrowsers.triggeredBy(fastOptJS in Compile),
-    libraryDependencies ++= Seq(
-      "org.scala-js" %%% "scalajs-dom" % "0.9.1"
-    )
-  )
-  .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
-  .dependsOn(sharedJs)
 
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value

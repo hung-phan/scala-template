@@ -1,4 +1,4 @@
-@(environment: play.api.Environment, configuration: play.api.Configuration)(title: String)(content: Html)
+@(title: String)(content: Html)(implicit viewHelpers: helpers.ViewHelpers)
 
 <!DOCTYPE html>
 <html>
@@ -15,8 +15,8 @@
             name => getClass.getResource(s"/public/$name") != null
         )
 
-        @if(environment.mode == play.api.Mode.Dev) {
-            <script type="application/javascript" src="@configuration.underlying.getString("workbench")"></script>
+        @if(viewHelpers.env.mode == play.api.Mode.Dev) {
+            <script type="application/javascript" src="@viewHelpers.config.underlying.getString("workbench")"></script>
         }
     </body>
 </html>
