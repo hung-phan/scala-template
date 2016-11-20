@@ -1,20 +1,26 @@
 @(title: String)(content: Html)(implicit viewHelpers: helpers.ViewHelpers)
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>@title</title>
+
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
     </head>
     <body>
+
         @content
+
         @scalajs.html.scripts(
             "client",
             routes.Assets.versioned(_).toString,
             name => getClass.getResource(s"/public/$name") != null
         )
-
         @if(viewHelpers.env.mode == play.api.Mode.Dev) {
             <script type="application/javascript" src="@viewHelpers.config.underlying.getString("workbench")"></script>
         }
