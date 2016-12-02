@@ -6,8 +6,8 @@ resolvers += "spray repo" at "http://repo.spray.io"
 
 resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/"
 
-resolvers += Resolver.url("heroku-sbt-plugin-releases",
-  url("https://dl.bintray.com/heroku/sbt-plugins/")
+resolvers += Resolver.url(
+  "heroku-sbt-plugin-releases", url("https://dl.bintray.com/heroku/sbt-plugins/")
 )(Resolver.ivyStylePatterns)
 
 // Sbt plugins
