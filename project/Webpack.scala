@@ -1,29 +1,20 @@
-import java.net.InetSocketAddress
-
-import play.sbt.PlayRunHook
 import sbt._
 
 object Webpack {
-  def apply(base: File): PlayRunHook = {
-    object WebpackProcess extends PlayRunHook {
-      var process: Option[Process] = None
+  lazy val devTask: TaskKey[Unit] = taskKey[Unit]("Webpack dev server")
+  lazy val proTask: TaskKey[Unit] = taskKey[Unit]("Webpack assets for production")
 
-      override def beforeStarted(): Unit = {
-        if (!(base / "node_modules").exists()) {
-          Process("npm install", base).run
-        }
-      }
+  def runYarnInstall(dir: File): Int = {
+    if ((dir / "node_modules").exists()) 0 else Process("yarn install", dir) !
+  }
 
-      override def afterStarted(addr: InetSocketAddress): Unit = {
-        process = Some(Process("npm run dev", base).run)
-      }
+  def runDev(dir: File): Int = {
+    val packagesInstall = runYarnInstall(dir)
+    if (packagesInstall == 0) Process("yarn run dev", dir) ! else packagesInstall
+  }
 
-      override def afterStopped(): Unit = {
-        process.foreach(_.destroy())
-        process = None
-      }
-    }
-
-    WebpackProcess
+  def runBuild(dir: File): Int = {
+    val packagesInstall = runYarnInstall(dir)
+    if (packagesInstall == 0) Process("yarn run build", dir) ! else packagesInstall
   }
 }
