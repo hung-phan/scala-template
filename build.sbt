@@ -23,13 +23,7 @@ lazy val client = (project in file("client"))
     persistLauncher in Test := false,
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "0.9.1"
-    ),
-    Webpack.devTask:= {
-      Webpack.runDev(baseDirectory.value / "js-frontend")
-    },
-    Webpack.proTask:= {
-      Webpack.runBuild(baseDirectory.value / "js-frontend")
-    }
+    )
   )
   .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
   .dependsOn(sharedJs)
@@ -40,9 +34,15 @@ lazy val server = (project in file("server"))
     scalaJSProjects := Seq(client),
     pipelineStages in Assets := Seq(scalaJSPipeline),
     pipelineStages := Seq(digest, gzip),
-//    unmanagedResourceDirectories in Assets += (ui.base / "build"),
     // triggers scalaJSPipeline when using compile or continuous compilation
     compile in Compile <<= (compile in Compile) dependsOn scalaJSPipeline,
+    Webpack.devTask:= {
+      Webpack.runDev(baseDirectory.value / "js-frontend")
+    },
+    Webpack.proTask:= {
+      Webpack.runBuild(baseDirectory.value / "js-frontend")
+    },
+    unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
     libraryDependencies ++= Seq(
       "com.h2database" % "h2" % "1.4.193",
       "com.typesafe.play" %% "play-slick" % "2.0.0",
