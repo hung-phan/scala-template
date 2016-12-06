@@ -1,0 +1,22 @@
+[ignore]
+.*/build/.*
+.*/config/.*
+.*/node_modules/fbjs/.*
+.*/test/.*
+
+[include]
+
+[libs]
+
+[options]
+module.system=haste
+
+# alias for babel-plugin-module-alias
+module.name_mapper='^src\/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+
+module.name_mapper='.*\.\(css\|scss\)$' -> '<PROJECT_ROOT>/app/interfaces/css-modules.js.flow'
+module.name_mapper='.*\.\(svg\|png\|jpg\|jpeg\|gif\)$' -> '<PROJECT_ROOT>/app/interfaces/webpack-assets.js.flow'
+
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

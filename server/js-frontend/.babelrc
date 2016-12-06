@@ -1,0 +1,31 @@
+{
+  "presets": ["./scripts/preset-es2015", "react", "stage-0"],
+  "plugins": [
+    "transform-runtime",
+    ["module-resolver", {
+      "root": ["."],
+      "alias": {
+        "src": "./src"
+      }
+    }]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-inline-elements",
+        "transform-react-remove-prop-types"
+      ]
+    },
+    "test": {
+      "plugins": [
+        "rewire"
+      ]
+    }
+  }
+}
