@@ -21,7 +21,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(ROOT, config.path.publicAssets),
+    path: path.join(ROOT, config.path.build),
   },
   externals: [],
   resolve: {
