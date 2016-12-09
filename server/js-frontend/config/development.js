@@ -22,7 +22,6 @@ _.mergeWith(developmentConfig, {
   devtool: 'source-map',
   devServer: {
     contentBase: ROOT,
-    noInfo: true,
     hot: true,
     inline: true,
   },
