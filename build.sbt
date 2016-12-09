@@ -36,10 +36,10 @@ lazy val server = (project in file("server"))
     pipelineStages := Seq(digest, gzip),
     // triggers scalaJSPipeline when using compile or continuous compilation
     compile in Compile <<= (compile in Compile) dependsOn scalaJSPipeline,
-    Webpack.devTask:= {
+    Webpack.webpackDevTask := {
       Webpack.runDev(baseDirectory.value / "js-frontend")
     },
-    Webpack.proTask:= {
+    Webpack.webpackProTask := {
       Webpack.runBuild(baseDirectory.value / "js-frontend")
     },
     unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
