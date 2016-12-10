@@ -14,7 +14,7 @@ The application contains three directories:
 ```shell
 $ sbt
 > run
-$ open http://localhost:9000
+$ cd server/js-frontend && yarn run dev
 ```
 
 ## Features

@@ -15,7 +15,7 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
   ))
 
   def webpackJsAsset(name: String): Html = {
-    if (env.mode == play.api.Mode.Dev)
+    if (env.mode == play.api.Mode.Prod)
       manifest match {
         case Success(json) =>
           Html.apply(s"<script type='text/javascript' src='/assets/${(json \ name).as[JsString].value}'></script>")
@@ -26,7 +26,7 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
   }
 
   def webpackCssAsset(name: String): Html = {
-    if (env.mode == play.api.Mode.Dev)
+    if (env.mode == play.api.Mode.Prod)
       manifest match {
         case Success(json) =>
           Html.apply(s"<link rel='stylesheet' media='all' href='/assets/${(json \ name).as[JsString].value}' />")
