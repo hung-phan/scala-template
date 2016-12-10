@@ -14,10 +14,6 @@ module.exports = {
     ],
     common: [
       path.join(ROOT, config.path.src, 'libs/index'),
-      'isomorphic-fetch',
-      'lodash',
-      'react',
-      'react-dom',
     ],
   },
   output: {

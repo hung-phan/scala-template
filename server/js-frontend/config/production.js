@@ -5,6 +5,7 @@ const config = require('./index');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const OfflinePlugin = require('offline-plugin');
 const productionConfig = require('./default');
 
@@ -56,6 +57,7 @@ productionConfig.plugins.push(
     filename: '[name].[contenthash].css',
     allChunks: true,
   }),
+  new ManifestPlugin(),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
     debug: false,
