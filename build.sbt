@@ -45,9 +45,9 @@ lazy val server = (project in file("server"))
     unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
     libraryDependencies ++= Seq(
       "com.h2database" % "h2" % "1.4.193",
-      "com.typesafe.play" %% "play-slick" % "2.0.0",
-      "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
-      "com.vmunier" %% "scalajs-scripts" % "1.0.0",
+      "com.typesafe.play" %% "play-slick" % "2.0.2",
+      "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",
+      "com.vmunier" %% "scalajs-scripts" % "1.1.0",
       specs2 % Test
     ),
     // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
