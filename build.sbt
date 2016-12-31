@@ -1,8 +1,8 @@
+import com.typesafe.sbt.packager.docker._
+
 import scala.language.postfixOps
 
 lazy val scalaV = "2.11.8"
-
-lazy val webpackBuild = taskKey[Unit]("Webpack build for the application")
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
   .settings(scalaVersion := scalaV)
@@ -28,6 +28,8 @@ lazy val client = (project in file("client"))
   .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
   .dependsOn(sharedJs)
 
+lazy val webpackBuild = taskKey[Unit]("Webpack build for the application")
+
 lazy val server = (project in file("server"))
   .settings(
     scalaVersion := scalaV,
@@ -51,7 +53,16 @@ lazy val server = (project in file("server"))
       specs2 % Test
     ),
     // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
-    EclipseKeys.preTasks := Seq(compile in Compile)
+    EclipseKeys.preTasks := Seq(compile in Compile),
+    // docker commands
+    dockerCommands := Seq(
+      Cmd("FROM", "openjdk:latest"),
+      Cmd("WORKDIR", "/opt/docker"),
+      Cmd("ADD", "opt /opt"),
+      ExecCmd("RUN", "chown", "-R", "daemon:daemon", "."),
+      Cmd("USER", "daemon"),
+      ExecCmd("ENTRYPOINT", "bin/server")
+    )
   )
   .enablePlugins(PlayScala)
   .dependsOn(sharedJvm)
