@@ -13,7 +13,7 @@ lazy val client = (project in file("client"))
   .settings(workbenchSettings: _*)
   .settings(
     bootSnippet := "example.ScalaJSExample().main();",
-    updateBrowsers <<= updateBrowsers.triggeredBy(fastOptJS in Compile)
+    updateBrowsers := (updateBrowsers triggeredBy (fastOptJS in Compile)).value
   )
   .settings(
     scalaVersion := scalaV,
@@ -33,7 +33,7 @@ lazy val server = (project in file("server"))
     scalaVersion := scalaV,
     scalaJSProjects := Seq(client),
     pipelineStages in Assets := Seq(scalaJSPipeline),
-    pipelineStages := Seq(digest, gzip),
+    pipelineStages := Seq(gzip),
     // triggers scalaJSPipeline when using compile or continuous compilation
     compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
     Webpack.webpackDevTask := {
