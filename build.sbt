@@ -1,5 +1,3 @@
-import com.typesafe.sbt.packager.docker._
-
 import scala.language.postfixOps
 
 lazy val scalaV = "2.11.8"
@@ -37,13 +35,15 @@ lazy val server = (project in file("server"))
     pipelineStages in Assets := Seq(scalaJSPipeline),
     pipelineStages := Seq(digest, gzip),
     // triggers scalaJSPipeline when using compile or continuous compilation
-    compile in Compile <<= (compile in Compile) dependsOn scalaJSPipeline,
+    compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
     Webpack.webpackDevTask := {
       Webpack.runDev(baseDirectory.value / "js-frontend")
     },
     Webpack.webpackProTask := {
       Webpack.runBuild(baseDirectory.value / "js-frontend")
     },
+    dist := (dist dependsOn Webpack.webpackProTask).value,
+    stage := (stage dependsOn Webpack.webpackProTask).value,
     unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
     libraryDependencies ++= Seq(
       "com.h2database" % "h2" % "1.4.193",
@@ -54,15 +54,8 @@ lazy val server = (project in file("server"))
     ),
     // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
     EclipseKeys.preTasks := Seq(compile in Compile),
-    // docker commands
-    dockerCommands := Seq(
-      Cmd("FROM", "openjdk:latest"),
-      Cmd("WORKDIR", "/opt/docker"),
-      Cmd("ADD", "opt /opt"),
-      ExecCmd("RUN", "chown", "-R", "daemon:daemon", "."),
-      Cmd("USER", "daemon"),
-      ExecCmd("ENTRYPOINT", "bin/server")
-    )
+    // docker base
+    dockerBaseImage := "openjdk"
   )
   .enablePlugins(PlayScala)
   .dependsOn(sharedJvm)

@@ -5,7 +5,13 @@ object Webpack {
   lazy val webpackProTask: TaskKey[Unit] = taskKey[Unit]("Webpack assets for production")
 
   def runYarnInstall(dir: File): Int = {
-    if ((dir / "node_modules").exists()) 0 else Process("yarn install", dir) !
+    val yarnCommandStatus: Int = Process("yarn", dir) !
+
+    if (yarnCommandStatus != 0) {
+      Process("npm install -g yarn && yarn", dir)
+    }
+
+    yarnCommandStatus
   }
 
   def runDev(dir: File): Int = {
