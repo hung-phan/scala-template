@@ -12,6 +12,11 @@ The application contains three directories:
 
 ## Run the application
 
+### Requirements
+
+- [node](https://nodejs.org/en/)
+- [yarn](https://yarnpkg.com/)
+
 ### Development
 ```shell
 $ sbt run
