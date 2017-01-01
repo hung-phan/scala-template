@@ -4,7 +4,6 @@ const _ = require('lodash');
 const config = require('./index');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const OfflinePlugin = require('offline-plugin');
 const productionConfig = require('./default');
@@ -71,7 +70,6 @@ productionConfig.plugins.push(
     },
     sourceMap: false,
   }),
-  new CompressionPlugin(),
   new OfflinePlugin({
     publicPath: config.path.assets,
     relativePaths: false,
