@@ -11,11 +11,21 @@ The application contains three directories:
 * `shared` Scala code that you want to share between the server and the client
 
 ## Run the application
+
+### Development
 ```shell
-$ sbt
-> run
+$ sbt run
 $ cd server/js-frontend && yarn run dev
 ```
+
+### Production
+
+Run this to build all the assets using webpack bundler
+
+```shell
+$ sbt webpackProTask
+```
+Before any other built commands like `dist`, `stage`, and `docker:publishLocal`
 
 ## Features
 
@@ -36,6 +46,5 @@ The application uses the [sbt-web-scalajs](https://github.com/vmunier/sbt-web-sc
 The root project aggregates all the other projects by default.
 Use this root project, called `scala-template`, to clean all the projects at once.
 ```shell
-$ sbt
-> scala-template/clean
+$ sbt clean
 ```
