@@ -1,6 +1,5 @@
 package helpers
 
-import java.io.File
 import javax.inject.Inject
 
 import play.api.libs.json.{JsString, JsValue, Json}
@@ -12,7 +11,7 @@ import scala.util.{Failure, Success, Try}
 class ViewHelpers @Inject()(val env: play.api.Environment,
                             val config: play.api.Configuration) {
   val manifest: Try[JsValue] = Try(Json.parse(
-    Source.fromFile(new File("/public/manifest.json")).getLines.mkString
+    Source.fromFile(env.getFile("/manifest.json")).getLines.mkString
   ))
 
   def webpackJsAsset(name: String): Html = {
