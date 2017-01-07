@@ -47,9 +47,9 @@ lazy val server = (project in file("server"))
     unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
     mappings in Universal ++= directory(baseDirectory.value / "js-frontend" / "build" / "manifest.json"),
     libraryDependencies ++= Seq(
-      "com.h2database" % "h2" % "1.4.193",
       "com.typesafe.play" %% "play-slick" % "2.0.2",
       "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",
+      "org.postgresql" % "postgresql" % "9.4.1212.jre7",
       "com.vmunier" %% "scalajs-scripts" % "1.0.0",
       specs2 % Test
     ),

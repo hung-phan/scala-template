@@ -12,8 +12,8 @@ import scala.util.Try
 class InitialData @Inject()(todosDAO: TodosDAO) {
   Try(Await.result(
     todosDAO.insert(Seq(
-      Todo(1L, "Hello", complete = true),
-      Todo(2L, "Nghi", complete = true)
+      Todo("Hello", complete = true),
+      Todo("world", complete = true)
     )),
     Duration.Inf
   ))

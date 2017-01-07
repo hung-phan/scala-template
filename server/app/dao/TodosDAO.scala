@@ -6,22 +6,23 @@ import models.Todo
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.driver.JdbcProfile
+import slick.lifted.ProvenShape
 
 import scala.concurrent.Future
 
 class TodosDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
   extends HasDatabaseConfigProvider[JdbcProfile] {
 
-  import driver.api._
+  import slick.driver.PostgresDriver.api._
 
-  private class TodosTable(tag: Tag) extends Table[Todo](tag, "Todos") {
-    def id = column[Long]("id", O.PrimaryKey)
+  private class TodosTable(tag: Tag) extends Table[Todo](tag, "todos") {
+    def text: Rep[String] = column[String]("text")
 
-    def text = column[String]("text")
+    def complete: Rep[Boolean] = column[Boolean]("complete")
 
-    def complete = column[Boolean]("complete")
+    def id: Rep[Long] = column[Long]("id", O.PrimaryKey, O.AutoInc)
 
-    def * = (id, text, complete) <> (Todo.tupled, Todo.unapply _)
+    def * : ProvenShape[Todo] = (text, complete, id.?) <> (Todo.tupled, Todo.unapply)
   }
 
   private val todos = TableQuery[TodosTable]

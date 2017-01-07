@@ -1,0 +1,25 @@
+version: '2'
+services:
+  webapp:
+    container_name: webapp
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    links:
+      - "postgres:database"
+  postgres:
+    container_name: prod_postgres
+    image: postgres:9.6.1
+    environment:
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=developer
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - prod_postgres:/var/lib/postgresql/data
+volumes:
+  prod_postgres:
+    driver: local

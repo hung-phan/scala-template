@@ -1,3 +1,3 @@
 package models
 
-case class Todo(id: Long, text: String, complete: Boolean)
+case class Todo(text: String, complete: Boolean, id: Option[Long] = None)

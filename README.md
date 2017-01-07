@@ -19,8 +19,9 @@ The application contains three directories:
 
 ### Development
 ```shell
+$ docker-compose up -d
 $ sbt run
-$ cd server/js-frontend && yarn run dev
+$ cd server/js-frontend && yarn run dev # in another terminal
 ```
 
 ### Production
