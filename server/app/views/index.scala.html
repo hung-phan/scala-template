@@ -1,4 +1,5 @@
-@()(implicit viewHelpers: helpers.ViewHelpers)
+@(message: String)(implicit viewHelpers: helpers.ViewHelpers)
 @main_layout("Application") {
+    <div>Server data: @message</div>
     <div id="app"></div>
 }
