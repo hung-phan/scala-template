@@ -17,6 +17,17 @@ The application contains three directories:
 - [node](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com/)
 
+## Profile
+
+To switch between multiple profile for development, production, and testing. You can add -Denv
+argument to the sbt command.
+
+```shell
+$ sbt -Denv=Production [addition arguments]
+$ sbt -Denv=Testing [addition arguments]
+$ sbt -Denv=Development [addition arguments] # This can also be written as sbt [addition arguments]
+```
+
 ### Development
 ```shell
 $ docker-compose up -d
@@ -29,9 +40,9 @@ $ cd server/js-frontend && yarn run dev # in another terminal
 Run this to build all the assets using webpack bundler
 
 ```shell
-$ sbt webpackProTask
+$ sbt -Denv=Production webpackProTask
+$ sbt -Denv=Production docker:publishLocal # Replace docker:publishLocal with other built tasks on your demand
 ```
-Before any other built commands like `dist`, `stage`, and `docker:publishLocal`
 
 ## Features
 

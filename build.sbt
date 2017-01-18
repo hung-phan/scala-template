@@ -46,6 +46,14 @@ lazy val server = (project in file("server"))
     stage := (stage dependsOn Webpack.webpackProTask).value,
     unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
     mappings in Universal ++= directory(baseDirectory.value / "js-frontend" / "build" / "manifest.json"),
+    mappings in Universal += {
+      val confFile = buildEnv.value match {
+        case BuildEnv.Production => "production.conf"
+        case BuildEnv.Test => "testing.conf"
+        case _ => "development.conf"
+      }
+      ((resourceDirectory in Compile).value / confFile) -> "conf/application.conf"
+    },
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-slick" % "2.0.2",
       "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",

@@ -19,7 +19,8 @@
             name => getClass.getResource(s"/public/$name") != null
         )
         @if(viewHelpers.env.mode == play.api.Mode.Dev) {
-            <script type="application/javascript" src="@viewHelpers.config.underlying.getString("workbench")"></script>
+            <script type="application/javascript"
+                    src="@viewHelpers.config.underlying.getString("workbench_server")"></script>
         }
     </body>
 </html>
