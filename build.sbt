@@ -49,7 +49,7 @@ lazy val server = (project in file("server"))
     mappings in Universal += {
       val confFile = buildEnv.value match {
         case BuildEnv.Production => "production.conf"
-        case BuildEnv.Test => "testing.conf"
+        case BuildEnv.Testing => "testing.conf"
         case _ => "development.conf"
       }
       ((resourceDirectory in Compile).value / confFile) -> "conf/application.conf"
