@@ -1,6 +1,6 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 
-lazy val scalaV = "2.11.8"
+lazy val scalaV = "2.12.1"
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
   .settings(scalaVersion := scalaV)
@@ -55,10 +55,10 @@ lazy val server = (project in file("server"))
       ((resourceDirectory in Compile).value / confFile) -> "conf/application.conf"
     },
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-slick" % "2.0.2",
-      "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",
-      "org.postgresql" % "postgresql" % "9.4.1212.jre7",
-      "com.vmunier" %% "scalajs-scripts" % "1.0.0",
+      "com.typesafe.play" %% "play-slick" % "2.1.0",
+      "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
+      "org.postgresql" % "postgresql" % "42.0.0",
+      "com.vmunier" %% "scalajs-scripts" % "1.1.0",
       specs2 % Test
     ),
     // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
