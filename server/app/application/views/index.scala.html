@@ -1,0 +1,7 @@
+@import application.views.html.main_layout
+
+@(message: String)(implicit viewHelpers: application.helpers.ViewHelpers)
+@main_layout("Application") {
+    <div>Server data: @message</div>
+    <div id="app"></div>
+}

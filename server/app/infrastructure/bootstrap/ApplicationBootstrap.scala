@@ -1,4 +1,4 @@
-package bootstrap
+package infrastructure.bootstrap
 
 import com.google.inject.AbstractModule
 

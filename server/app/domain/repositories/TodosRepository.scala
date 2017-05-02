@@ -1,8 +1,8 @@
-package dao
+package domain.repositories
 
 import javax.inject.Inject
 
-import models.Todo
+import domain.models.Todo
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.jdbc.JdbcProfile
@@ -10,7 +10,7 @@ import slick.lifted.ProvenShape
 
 import scala.concurrent.Future
 
-class TodosDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
+class TodosRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
   extends HasDatabaseConfigProvider[JdbcProfile] {
 
   import slick.jdbc.PostgresProfile.api._

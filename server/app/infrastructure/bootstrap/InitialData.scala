@@ -1,22 +1,20 @@
-package bootstrap
+package infrastructure.bootstrap
 
 import javax.inject.Inject
 
-import dao.TodosDAO
-import models.Todo
+import domain.models.Todo
+import domain.repositories.TodosRepository
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import scala.util.Try
 
-class InitialData @Inject()(todosDAO: TodosDAO) {
-  // run on start
-
+class InitialData @Inject()(todosRepository: TodosRepository) {
   Try(Await.result(
-    todosDAO.count().map((size: Int) => {
+    todosRepository.count().map((size: Int) => {
       if (size == 0) {
-        todosDAO.insert(
+        todosRepository.insert(
           for (index <- 1 to 10)
             yield Todo(s"Todo $index", complete = false)
         )

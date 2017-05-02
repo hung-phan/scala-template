@@ -86,9 +86,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "yarn run clean && ./scripts/build",
+    "build": "yarn run clean && ./scripts/prod",
     "clean": "rimraf build",
-    "dev": "./scripts/dev",
+    "dev": "yarn run clean && ./scripts/dev",
     "flow:status": "flow status; test $? -eq 0 -o $? -eq 2",
     "flow:stop": "flow stop",
     "flow:watch": "yarn run flow:status && chokidar './src/**/*.js' './src/**/*.jsx' -c 'yarn run flow:status'",

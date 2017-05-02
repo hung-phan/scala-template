@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     app: [path.join(ROOT, config.path.src, "app")],
     vendor: [
-      path.join(ROOT, config.path.src, "helpers/loadExternalLibs")
+      path.join(ROOT, config.path.src, "application.helpers/loadExternalLibs")
     ]
   },
   output: {
