@@ -11,7 +11,7 @@ resolvers += Resolver.url(
 )(Resolver.ivyStylePatterns)
 
 // Sbt plugins
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.13")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.14")
 
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.0")
 

@@ -1,13 +1,20 @@
 {
   "extends": "airbnb",
   "parser": "babel-eslint",
-  "plugins": ["mocha", "flowtype"],
+  "plugins": [
+    "mocha",
+    "flowtype"
+  ],
   "env": {
     "mocha": true,
     "browser": true,
     "node": true
   },
   "rules": {
+    "quotes": [
+      2,
+      "double"
+    ],
     "comma-dangle": 0,
     "no-param-reassign": 0,
     "global-require": 0,
@@ -17,9 +24,18 @@
     "import/no-named-as-default": 0,
     "react/require-extension": 0,
     "flowtype/define-flow-type": 1,
-    "flowtype/space-after-type-colon": [1, "always"],
-    "flowtype/space-before-type-colon": [1, "never"],
-    "flowtype/type-id-match": [1, "^([A-Z][a-z0-9]+)+Type$"],
+    "flowtype/space-after-type-colon": [
+      1,
+      "always"
+    ],
+    "flowtype/space-before-type-colon": [
+      1,
+      "never"
+    ],
+    "flowtype/type-id-match": [
+      1,
+      "^([A-Z][a-z0-9]+)+Type$"
+    ],
     "flowtype/use-flow-type": 1
   },
   "settings": {

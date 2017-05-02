@@ -3,4 +3,8 @@ if [ -z "${NODE_ENV}" ]; then
   export NODE_ENV=${1:-development}
 fi
 
+if [ -z "${RUN_MODE}" ]; then
+  export RUN_MODE=${2:-es}
+fi
+
 webpack-dev-server --config config/development.js

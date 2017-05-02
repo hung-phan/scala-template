@@ -5,7 +5,7 @@ import javax.inject.Inject
 import models.Todo
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 import slick.lifted.ProvenShape
 
 import scala.concurrent.Future
@@ -13,7 +13,7 @@ import scala.concurrent.Future
 class TodosDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
   extends HasDatabaseConfigProvider[JdbcProfile] {
 
-  import slick.driver.PostgresDriver.api._
+  import slick.jdbc.PostgresProfile.api._
 
   private class TodosTable(tag: Tag) extends Table[Todo](tag, "todos") {
     def text: Rep[String] = column[String]("text")
