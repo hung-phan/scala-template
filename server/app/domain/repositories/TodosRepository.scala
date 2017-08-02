@@ -4,13 +4,13 @@ import javax.inject.Inject
 
 import domain.models.Todo
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.jdbc.JdbcProfile
 import slick.lifted.ProvenShape
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
-class TodosRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
+class TodosRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider,
+                                implicit val ec: ExecutionContext)
   extends HasDatabaseConfigProvider[JdbcProfile] {
 
   import slick.jdbc.PostgresProfile.api._

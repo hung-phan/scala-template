@@ -4,13 +4,13 @@ import javax.inject.Inject
 
 import domain.models.Todo
 import domain.repositories.TodosRepository
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
-import scala.concurrent.Await
 import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, ExecutionContext}
 import scala.util.Try
 
-class InitialData @Inject()(todosRepository: TodosRepository) {
+class InitialData @Inject()(todosRepository: TodosRepository,
+                            implicit val ec: ExecutionContext) {
   Try(Await.result(
     todosRepository.count().map((size: Int) => {
       if (size == 0) {
