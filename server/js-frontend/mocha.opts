@@ -1,6 +1,0 @@
---recursive
---compilers js:./compiler
---compilers jsx:./compiler
-
-./src/**/__tests__/*.js
-./src/**/__tests__/*.jsx

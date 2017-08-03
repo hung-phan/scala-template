@@ -1,6 +1,7 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 
 lazy val scalaV = "2.12.2"
+lazy val circeVersion = "0.8.0"
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
   .settings(scalaVersion := scalaV)
@@ -21,7 +22,6 @@ lazy val client = (project in file("client"))
     scalaJSUseMainModuleInitializer in Test := false,
     libraryDependencies ++= Seq(
       guice,
-      "com.typesafe.play" %% "play-json" % "2.6.2",
       "org.scala-js" %%% "scalajs-dom" % "0.9.1"
     )
   )
@@ -57,8 +57,13 @@ lazy val server = (project in file("server"))
       ((resourceDirectory in Compile).value / confFile) -> "conf/application.conf"
     },
     libraryDependencies ++= Seq(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser",
+      "io.circe" %% "circe-optics"
+    ).map(_ % circeVersion),
+    libraryDependencies ++= Seq(
       guice,
-      "com.typesafe.play" %% "play-json" % "2.6.2",
       "com.typesafe.play" %% "play-slick" % "3.0.0",
       "com.typesafe.play" %% "play-slick-evolutions" % "3.0.0",
       "org.postgresql" % "postgresql" % "42.1.4",

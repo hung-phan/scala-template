@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     app: [path.join(ROOT, config.path.src, "app")],
     vendor: [
-      path.join(ROOT, config.path.src, "application.helpers/loadExternalLibs")
+      path.join(ROOT, config.path.src, "helpers/loadExternalLibs")
     ]
   },
   output: {
@@ -64,6 +64,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env.RUNTIME_ENV": "'client'"
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       minChunks: module => module.context && module.context.includes("node_modules")

@@ -1,13 +1,14 @@
 "use strict";
 
 const _ = require("lodash");
-const config = require("./index");
 const webpack = require("webpack");
+const BabiliPlugin = require("babili-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const OfflinePlugin = require("offline-plugin");
 const productionConfig = require("./default");
+const config = require("./index");
 
 _.mergeWith(
   productionConfig,
@@ -19,11 +20,10 @@ _.mergeWith(
       chunkFilename: "[id].[chunkhash].js"
     }
   },
-  (obj1, obj2) => _.isArray(obj2) ? obj2.concat(obj1) : undefined
+  (obj1, obj2) => (_.isArray(obj2) ? obj2.concat(obj1) : undefined)
 );
 
-productionConfig.module.loaders.push(
-  {
+productionConfig.module.loaders.push(  {
     test: /\.css$/,
     loader: ExtractTextPlugin.extract({
       fallback: "style-loader",
@@ -32,14 +32,14 @@ productionConfig.module.loaders.push(
   },
   {
     test: /\.less$/,
-    use: ExtractTextPlugin.extract({
+    loader: ExtractTextPlugin.extract({
       fallback: "style-loader",
       use: `css-loader${config.cssModules}!postcss-loader!less-loader`
     })
   },
   {
     test: /\.scss$/,
-    use: ExtractTextPlugin.extract({
+    loader: ExtractTextPlugin.extract({
       fallback: "style-loader",
       use: `css-loader${config.cssModules}!postcss-loader!sass-loader`
     })
@@ -58,29 +58,30 @@ productionConfig.plugins.push(
     minimize: true,
     debug: false
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    },
-    output: {
-      comments: false
-    },
-    sourceMap: false
+  new BabiliPlugin({}, {
+    comments: false
   }),
   new CompressionPlugin(),
   new OfflinePlugin({
-    publicPath: config.path.assets,
-    relativePaths: false,
     safeToUseOptionalCaches: true,
-    externals: ["/"],
-    updateStrategy: "all",
-    ServiceWorker: {
-      events: true,
-      navigateFallbackURL: "/"
+    caches: {
+      main: [
+        "*.js",
+        "*.css",
+        "/"
+      ],
+      additional: [
+        "*.woff",
+        "*.woff2",
+        "*.eot",
+        "*.ttf"
+      ],
+      optional: [":rest:"]
     },
-    AppCache: {
-      events: true,
-      directory: "appcache/"
+    externals: ["/"],
+    relativePaths: false,
+    ServiceWorker: {
+      events: true
     }
   }),
   new ManifestPlugin()

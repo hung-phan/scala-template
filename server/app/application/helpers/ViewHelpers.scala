@@ -2,25 +2,27 @@ package application.helpers
 
 import javax.inject.Inject
 
-import play.api.libs.json.{JsString, JsValue, Json}
+import io.circe._
+import io.circe.parser._
 import play.twirl.api.Html
 
 import scala.io.Source
-import scala.util.{Failure, Success, Try}
 
 class ViewHelpers @Inject()(val env: play.api.Environment,
                             val config: play.api.Configuration) {
-  val manifest: Try[JsValue] = Try(Json.parse(
+  val manifest: Either[ParsingFailure, Json] = parse(
     Source.fromFile(env.getFile("/manifest.json")).getLines.mkString
-  ))
+  )
+
+  def getAssetPath(json: Json, name: String): String = json.hcursor.get[String](name).getOrElse("")
 
   def webpackJsAsset(name: String): Html = {
     if (env.mode == play.api.Mode.Prod)
       manifest match {
-        case Success(json) =>
-          Html.apply(s"<script type='text/javascript' src='/assets/${(json \ name).as[JsString].value}'></script>")
+        case Left(ex) => throw ex
 
-        case Failure(ex) => throw ex
+        case Right(json) =>
+          Html.apply(s"<script type='text/javascript' src='/assets/${getAssetPath(json, name)}'></script>")
       }
     else Html.apply(s"<script type='text/javascript' src='http://localhost:8080/build/$name'></script>")
   }
@@ -28,10 +30,10 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
   def webpackCssAsset(name: String): Html = {
     if (env.mode == play.api.Mode.Prod)
       manifest match {
-        case Success(json) =>
-          Html.apply(s"<link rel='stylesheet' media='all' href='/assets/${(json \ name).as[JsString].value}' />")
+        case Left(ex) => throw ex
 
-        case Failure(ex) => throw ex
+        case Right(json) =>
+          Html.apply(s"<link rel='stylesheet' media='all' href='/assets/${getAssetPath(json, name)}' />")
       }
     else Html.apply("")
   }

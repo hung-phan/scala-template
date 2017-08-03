@@ -10,9 +10,6 @@ const developmentConfig = require("./default");
 _.mergeWith(
   developmentConfig,
   {
-    entry: {
-      app: ["react-hot-loader/patch"]
-    },
     output: {
       publicPath: `http://localhost:8080${config.path.build}`,
       filename: "[name].js",
@@ -23,11 +20,14 @@ _.mergeWith(
     devServer: {
       contentBase: ROOT,
       hot: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
       inline: true
     },
     recordsPath: path.join(ROOT, config.path.tmp, "client-records.json")
   },
-  (obj1, obj2) => _.isArray(obj2) ? obj2.concat(obj1) : undefined
+  (obj1, obj2) => (_.isArray(obj2) ? obj2.concat(obj1) : undefined)
 );
 
 developmentConfig.module.loaders.push(
