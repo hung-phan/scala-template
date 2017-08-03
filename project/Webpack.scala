@@ -16,11 +16,11 @@ object Webpack {
 
   def runDev(dir: File): Int = {
     val packagesInstall = runYarnInstall(dir)
-    if (packagesInstall == 0) Process("yarn run dev", dir) ! else packagesInstall
+    if (packagesInstall == 0) Process("npm run dev", dir) ! else packagesInstall
   }
 
   def runBuild(dir: File): Int = {
     val packagesInstall = runYarnInstall(dir)
-    if (packagesInstall == 0) Process("yarn run build", dir) ! else packagesInstall
+    if (packagesInstall == 0) Process("npm run build", dir) ! else packagesInstall
   }
 }
