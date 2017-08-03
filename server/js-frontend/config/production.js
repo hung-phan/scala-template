@@ -81,6 +81,7 @@ productionConfig.plugins.push(
     externals: ["/"],
     relativePaths: false,
     ServiceWorker: {
+      publicPath: "/sw.js",
       events: true
     }
   }),
