@@ -62,6 +62,5 @@ The root project aggregates all the other projects by default.
 Use this root project, called `scala-template`, to clean all the projects at once.
 
 ```bash
-$ sbt clean
-$ rm -rf server/js-frontend/build
+$ ./scripts/clean.sh
 ```

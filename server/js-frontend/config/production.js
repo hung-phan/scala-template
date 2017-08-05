@@ -16,8 +16,8 @@ _.mergeWith(
     devtool: false,
     output: {
       publicPath: config.path.assets,
-      filename: "[name].[chunkhash].js",
-      chunkFilename: "[id].[chunkhash].js"
+      filename: "[name].wp.[chunkhash].js",
+      chunkFilename: "[id].wp.[chunkhash].js"
     }
   },
   (obj1, obj2) => (_.isArray(obj2) ? obj2.concat(obj1) : undefined)
@@ -51,7 +51,7 @@ productionConfig.plugins.push(
     "process.env.NODE_ENV": "'production'"
   }),
   new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
+    filename: "[name].wp.[contenthash].css",
     allChunks: true
   }),
   new webpack.LoaderOptionsPlugin({
