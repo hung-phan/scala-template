@@ -7,11 +7,12 @@ import io.circe.parser._
 import play.twirl.api.Html
 
 import scala.io.Source
+import scala.util.Try
 
 class ViewHelpers @Inject()(val env: play.api.Environment,
                             val config: play.api.Configuration) {
   val manifest: Either[ParsingFailure, Json] = parse(
-    Source.fromFile(env.getFile("/manifest.json")).getLines.mkString
+    Try(Source.fromFile(env.getFile("/manifest.json")).getLines.mkString).getOrElse("{}")
   )
 
   def getAssetPath(json: Json, name: String): String = json.hcursor.get[String](name).getOrElse("")
