@@ -17,11 +17,17 @@ The application contains three directories:
 - [node](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com/)
 
+Install npm dependencies
+
+```bash
+$ cd server/js-frontend && yarn # run this only once
+```
+
 ### Development
 ```bash
 $ docker-compose up -d
 $ sbt -Dconfig.file=server/conf/development.conf run
-$ cd server/js-frontend && yarn run dev # in separated terminal
+$ cd server/js-frontend && npm run dev # in separated terminal
 ```
 
 ### Production

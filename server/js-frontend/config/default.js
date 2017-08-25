@@ -1,10 +1,11 @@
 "use strict";
 
 const path = require("path");
-const cssnext = require("postcss-cssnext");
-const ROOT = require("./path-helper").ROOT;
-const config = require("./index");
 const webpack = require("webpack");
+const cssnext = require("postcss-cssnext");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
+const ROOT = require("./path-helper").ROOT;
+const config = require(".");
 
 module.exports = {
   context: ROOT,
@@ -59,6 +60,7 @@ module.exports = {
         }
       }
     }),
+    new StyleLintPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({

@@ -8,7 +8,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const OfflinePlugin = require("offline-plugin");
 const productionConfig = require("./default");
-const config = require("./index");
+const config = require(".");
 
 _.mergeWith(
   productionConfig,

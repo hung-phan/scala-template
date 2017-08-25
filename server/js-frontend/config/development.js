@@ -2,10 +2,10 @@
 
 const _ = require("lodash");
 const path = require("path");
-const ROOT = require("./path-helper").ROOT;
-const config = require("./index");
 const webpack = require("webpack");
 const developmentConfig = require("./default");
+const ROOT = require("./path-helper").ROOT;
+const config = require(".");
 
 _.mergeWith(
   developmentConfig,
