@@ -5,6 +5,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
@@ -12,7 +13,6 @@
     "babel-runtime": "^6.26.0",
     "babel-template": "^6.26.0",
     "babel-types": "^6.26.0",
-    "babili-webpack-plugin": "^0.1.2",
     "bootstrap": "^3.3.7",
     "bundle-loader": "^0.5.5",
     "compression-webpack-plugin": "^1.0.0",
@@ -88,7 +88,7 @@
     "dev": "./scripts/dev.sh",
     "flow-status": "flow status; test $? -eq 0 -o $? -eq 2",
     "flow-stop": "flow stop",
-    "flow-watch": "yarn run flow:status && chokidar './src/**/*.js' -c 'yarn run flow:status'",
+    "flow-watch": "yarn run flow:status && chokidar './src/**/*.js' -c 'yarn run flow-status'",
     "test": "env-cmd --no-override ./scripts/env/test jest"
   }
 }

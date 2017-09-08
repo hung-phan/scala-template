@@ -2,7 +2,7 @@
 
 const _ = require("lodash");
 const webpack = require("webpack");
-const BabiliPlugin = require("babili-webpack-plugin");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
@@ -58,7 +58,7 @@ productionConfig.plugins.push(
     minimize: true,
     debug: false
   }),
-  new BabiliPlugin({}, {
+  new MinifyPlugin({}, {
     comments: false
   }),
   new CompressionPlugin(),
