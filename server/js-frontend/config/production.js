@@ -3,6 +3,7 @@
 const _ = require("lodash");
 const webpack = require("webpack");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+const ShakePlugin = require("webpack-common-shake").Plugin;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
@@ -44,6 +45,10 @@ productionConfig.module.loaders.push(  {
       use: `css-loader${config.cssModules}!postcss-loader!sass-loader`
     })
   }
+);
+
+productionConfig.plugins.unshift(
+  new ShakePlugin()
 );
 
 productionConfig.plugins.push(
