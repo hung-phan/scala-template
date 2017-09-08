@@ -6,7 +6,10 @@ import application.helpers.ViewHelpers
 import play.api.mvc._
 import shared.SharedMessages
 
-class Application @Inject()(implicit val viewHelpers: ViewHelpers) extends Controller {
+class Application @Inject() (
+  controllerComponents: ControllerComponents,
+  implicit val viewHelpers: ViewHelpers
+) extends AbstractController(controllerComponents) {
   def index: Action[AnyContent] = Action {
     Ok(application.views.html.index(SharedMessages.itWorks))
   }
