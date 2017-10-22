@@ -4,7 +4,7 @@ const _ = require("lodash");
 const path = require("path");
 const webpack = require("webpack");
 const developmentConfig = require("./default");
-const ROOT = require("./path-helper").ROOT;
+const { ROOT } = require("./path-helper");
 const config = require(".");
 
 _.mergeWith(

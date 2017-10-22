@@ -63,33 +63,25 @@ productionConfig.plugins.push(
     minimize: true,
     debug: false
   }),
-  new MinifyPlugin({}, {
-    comments: false
-  }),
-  new CompressionPlugin(),
   new OfflinePlugin({
     safeToUseOptionalCaches: true,
     caches: {
-      main: [
-        "*.js",
-        "*.css",
-        "/"
-      ],
-      additional: [
-        "*.woff",
-        "*.woff2",
-        "*.eot",
-        "*.ttf"
-      ],
+      main: ["*.js", "*.css"],
+      additional: [":externals:"],
       optional: [":rest:"]
     },
-    externals: ["/"],
+    externals: ["*.woff", "*.woff2", "*.eot", "*.ttf"],
     relativePaths: false,
     ServiceWorker: {
+      minify: true,
       publicPath: "/sw.js",
       events: true
     }
   }),
+  new MinifyPlugin({}, {
+    comments: false
+  }),
+  new CompressionPlugin(),
   new ManifestPlugin()
 );
 
