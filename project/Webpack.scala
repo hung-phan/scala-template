@@ -1,4 +1,5 @@
 import sbt._
+import scala.sys.process._
 
 object Webpack {
   lazy val webpackDevTask: TaskKey[Unit] = taskKey[Unit]("Webpack dev server")

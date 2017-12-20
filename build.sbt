@@ -1,6 +1,6 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 
-lazy val scalaV = "2.12.2"
+lazy val scalaV = "2.12.4"
 lazy val circeVersion = "0.8.0"
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
@@ -11,21 +11,16 @@ lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
 
 lazy val client = (project in file("client"))
-  .settings(workbenchSettings: _*)
-  .settings(
-    bootSnippet := "example.ScalaJSExample().main();",
-    updateBrowsers := (updateBrowsers triggeredBy (fastOptJS in Compile)).value
-  )
   .settings(
     scalaVersion := scalaV,
     scalaJSUseMainModuleInitializer := true,
     scalaJSUseMainModuleInitializer in Test := false,
     libraryDependencies ++= Seq(
       guice,
-      "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+      "org.scala-js" %%% "scalajs-dom" % "0.9.4"
     )
   )
-  .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
+  .enablePlugins(WorkbenchPlugin, ScalaJSPlugin, ScalaJSWeb)
   .dependsOn(sharedJs)
 
 lazy val webpackBuild = taskKey[Unit]("Webpack build for the application")
@@ -63,6 +58,7 @@ lazy val server = (project in file("server"))
       "io.circe" %% "circe-optics"
     ).map(_ % circeVersion),
     libraryDependencies ++= Seq(
+      ws,
       guice,
       "com.typesafe.play" %% "play-slick" % "3.0.1",
       "com.typesafe.play" %% "play-slick-evolutions" % "3.0.1",
@@ -70,7 +66,8 @@ lazy val server = (project in file("server"))
       "com.vmunier" %% "scalajs-scripts" % "1.1.1",
       specs2 % Test
     ),
-    // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
+    // Compile the project before generating Eclipse files, so that
+    // generated .scala or .class files for views and routes are present
     EclipseKeys.preTasks := Seq(compile in Compile),
     // docker base
     dockerBaseImage := "openjdk"
@@ -79,4 +76,4 @@ lazy val server = (project in file("server"))
   .dependsOn(sharedJvm)
 
 // loads the server project at sbt startup
-onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
+onLoad in Global ~= (_ andThen ("project server" :: _))
