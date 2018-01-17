@@ -11,7 +11,7 @@ services:
       - "postgres:database"
   postgres:
     container_name: prod_postgres
-    image: postgres:9
+    image: postgres:10
     environment:
       - POSTGRES_USER=developer
       - POSTGRES_PASSWORD=developer

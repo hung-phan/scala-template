@@ -25,4 +25,6 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.2")
 
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
-addSbtPlugin("com.lihaoyi" % "workbench" % "0.4.0")
+lazy val workbench = RootProject(uri("git://github.com/lihaoyi/workbench.git#75acf7d06cac7fe1798a585ee742005eac6d2ef9"))
+
+lazy val root = (project in file(".")).dependsOn(workbench)

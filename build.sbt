@@ -20,7 +20,7 @@ lazy val client = (project in file("client"))
       "org.scala-js" %%% "scalajs-dom" % "0.9.4"
     )
   )
-  .enablePlugins(WorkbenchPlugin, ScalaJSPlugin, ScalaJSWeb)
+  .enablePlugins(WorkbenchSplicePlugin, ScalaJSPlugin, ScalaJSWeb)
   .dependsOn(sharedJs)
 
 lazy val webpackBuild = taskKey[Unit]("Webpack build for the application")
