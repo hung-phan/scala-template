@@ -1,7 +1,7 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 
 lazy val scalaV = "2.12.4"
-lazy val circeVersion = "0.8.0"
+lazy val circeVersion = "0.9.0"
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
   .settings(scalaVersion := scalaV)
