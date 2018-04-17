@@ -60,10 +60,10 @@ lazy val server = (project in file("server"))
     libraryDependencies ++= Seq(
       ws,
       guice,
-      "com.typesafe.play" %% "play-slick" % "3.0.1",
-      "com.typesafe.play" %% "play-slick-evolutions" % "3.0.1",
+      "com.typesafe.play" %% "play-slick" % "3.0.3",
+      "com.typesafe.play" %% "play-slick-evolutions" % "3.0.3",
       "org.postgresql" % "postgresql" % "42.2.2",
-      "com.vmunier" %% "scalajs-scripts" % "1.1.1",
+      "com.vmunier" %% "scalajs-scripts" % "1.1.2",
       specs2 % Test
     ),
     // Compile the project before generating Eclipse files, so that
