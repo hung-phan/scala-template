@@ -1,9 +1,8 @@
-package infrastructure.bootstrap
+package infrastructure.service
 
+import domain.model.Todo
+import infrastructure.persistence.TodosRepository
 import javax.inject.Inject
-
-import domain.models.Todo
-import domain.repositories.TodosRepository
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}

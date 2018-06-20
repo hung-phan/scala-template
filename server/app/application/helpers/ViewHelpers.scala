@@ -1,9 +1,8 @@
 package application.helpers
 
-import javax.inject.Inject
-
 import io.circe._
 import io.circe.parser._
+import javax.inject.Inject
 import play.twirl.api.Html
 
 import scala.io.Source
@@ -14,8 +13,6 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
   val manifest: Either[ParsingFailure, Json] = parse(
     Try(Source.fromFile(env.getFile("/manifest.json")).getLines.mkString).getOrElse("{}")
   )
-
-  def getAssetPath(json: Json, name: String): String = json.hcursor.get[String](name).getOrElse("")
 
   def webpackJsAsset(name: String): Html = {
     if (env.mode == play.api.Mode.Prod)
@@ -38,4 +35,6 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
       }
     else Html.apply("")
   }
+
+  def getAssetPath(json: Json, name: String): String = json.hcursor.get[String](name).getOrElse("")
 }
