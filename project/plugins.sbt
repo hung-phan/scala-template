@@ -11,7 +11,7 @@ resolvers += Resolver.url(
 )(Resolver.ivyStylePatterns)
 
 // Sbt plugins
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.13")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.15")
 
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.3")
 
@@ -19,11 +19,9 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")
 
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.21")
 
-addSbtPlugin("com.vmunier" % "sbt-web-scalajs" % "1.0.6")
+addSbtPlugin("com.vmunier" % "sbt-web-scalajs" % "1.0.8-0.6")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.2")
-
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 addSbtPlugin("com.lihaoyi" % "workbench" % "0.4.1")
 
