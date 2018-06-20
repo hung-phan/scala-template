@@ -12,9 +12,7 @@
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <link rel="manifest" href="@routes.Assets.at("manifest/main.json")">
-        @if(viewHelpers.env.mode == play.api.Mode.Prod) {
-            @viewHelpers.webpackCssAsset("app.css")
-        }
+        @viewHelpers.webpackCssAsset("app.css")
     </head>
     <body>
         @content
