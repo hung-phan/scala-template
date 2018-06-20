@@ -2,7 +2,7 @@ version: '3'
 services:
   webapp:
     container_name: webapp
-    image: server:0.1-SNAPSHOT # build by sbt docker
+    image: server:0.1.0-SNAPSHOT # build by sbt docker
     ports:
       - "9000:9000"
     depends_on:
