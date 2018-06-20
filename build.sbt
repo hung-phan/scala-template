@@ -34,15 +34,15 @@ lazy val server = (project in file("server"))
     // triggers scalaJSPipeline when using compile or continuous compilation
     compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
     Webpack.webpackDevTask := {
-      Webpack.runDev(baseDirectory.value / "js-frontend")
+      Webpack.runDev(baseDirectory.value / "frontend")
     },
     Webpack.webpackProTask := {
-      Webpack.runBuild(baseDirectory.value / "js-frontend")
+      Webpack.runBuild(baseDirectory.value / "frontend")
     },
     dist := (dist dependsOn Webpack.webpackProTask).value,
     stage := (stage dependsOn Webpack.webpackProTask).value,
-    unmanagedResourceDirectories in Assets += (baseDirectory.value / "js-frontend" / "build"),
-    mappings in Universal ++= directory(baseDirectory.value / "js-frontend" / "build" / "manifest.json"),
+    unmanagedResourceDirectories in Assets += (baseDirectory.value / "frontend" / "dist"),
+    mappings in Universal ++= directory(baseDirectory.value / "frontend" / "dist" / "manifest.json"),
     mappings in Universal += {
       val confFile = buildEnv.value match {
         case BuildEnv.Production => "production.conf"

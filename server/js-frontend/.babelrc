@@ -1,6 +1,0 @@
-{
-  "presets": ["./scripts/preset-js", "stage-0"],
-  "plugins": [
-    "transform-runtime"
-  ]
-}

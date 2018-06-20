@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 sbt clean
-cd server/js-frontend && npm run clean
+cd server/frontend && npm run clean

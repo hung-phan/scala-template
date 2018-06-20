@@ -1,0 +1,30 @@
+{
+  "name": "frontend",
+  "description": "Describe frontend here",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "^4.1.1"
+  },
+  "devDependencies": {
+    "nwb": "0.21.x",
+    "nwb-less": "^0.7.0",
+    "nwb-sass": "^0.8.4",
+    "prettier": "^1.13.5",
+    "stylelint": "^8.4.0",
+    "stylelint-config-css-modules": "^1.1.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-webpack-plugin": "^0.9.0",
+    "webpack-manifest-plugin": "^2.0.3"
+  },
+  "license": "MIT",
+  "private": true,
+  "repository": "",
+  "scripts": {
+    "build": "nwb web build src/index.js --port 8080 --plugins sass,less",
+    "clean": "nwb clean-app",
+    "start": "nwb web run src/index.js --port 8080 --plugins sass,less --reload",
+    "test": "nwb test",
+    "test:coverage": "nwb test --coverage",
+    "test:watch": "nwb test --server"
+  }
+}
