@@ -20,7 +20,7 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
         case Left(ex) => throw ex
 
         case Right(json) =>
-          Html.apply(s"<script type='text/javascript' src='/assets/${getAssetPath(json, name)}'></script>")
+          Html.apply(s"<script type='text/javascript' src='/assets${getAssetPath(json, name)}'></script>")
       }
     else Html.apply(s"<script type='text/javascript' src='http://localhost:8080/$name'></script>")
   }
@@ -31,7 +31,7 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
         case Left(ex) => throw ex
 
         case Right(json) =>
-          Html.apply(s"<link rel='stylesheet' media='all' href='/assets/${getAssetPath(json, name)}' />")
+          Html.apply(s"<link rel='stylesheet' media='all' href='/assets${getAssetPath(json, name)}' />")
       }
     else Html.apply("")
   }
