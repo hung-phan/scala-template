@@ -1,6 +1,6 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 
-lazy val scalaV = "2.12.4"
+lazy val scalaV = "2.12.6"
 lazy val circeVersion = "0.9.3"
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
@@ -62,7 +62,7 @@ lazy val server = (project in file("server"))
       guice,
       "com.typesafe.play" %% "play-slick" % "3.0.3",
       "com.typesafe.play" %% "play-slick-evolutions" % "3.0.3",
-      "org.postgresql" % "postgresql" % "42.2.2",
+      "org.postgresql" % "postgresql" % "42.2.4",
       "com.vmunier" %% "scalajs-scripts" % "1.1.2",
       specs2 % Test
     ),
