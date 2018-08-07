@@ -1,7 +1,6 @@
 # Play Framework with Scala.js
 
-[![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![build status](https://secure.travis-ci.org/hung-phan/scala-template.svg)](http://travis-ci.org/hung-phan/scala-template/)
 
 This is a simple example application showing how you can integrate a Play project with a Scala.js project.
 
