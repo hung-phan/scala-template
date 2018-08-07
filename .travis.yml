@@ -6,9 +6,6 @@ jdk: oraclejdk8
 scala:
   - 2.12.6
 
-services:
-  - docker
-
 before_install:
   - sudo service postgresql stop
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
