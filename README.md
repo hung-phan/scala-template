@@ -1,6 +1,6 @@
 # Play Framework with Scala.js
 
-[![build status](https://secure.travis-ci.org/hung-phan/scala-template.svg)](http://travis-ci.org/hung-phan/scala-template/)
+[![build status](https://travis-ci.org/hung-phan/scala-template.svg?branch=master)](http://travis-ci.org/hung-phan/scala-template/)
 
 This is a simple example application showing how you can integrate a Play project with a Scala.js project.
 
