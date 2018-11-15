@@ -1,23 +1,28 @@
 import com.typesafe.sbt.packager.MappingsHelper._
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
-lazy val scalaV = "2.12.7"
 lazy val circeVersion = "0.10.0"
 
-lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
-  .settings(scalaVersion := scalaV)
-  .jsConfigure(_ enablePlugins ScalaJSWeb)
+lazy val commonSettings = Seq(
+  scalaVersion := "2.12.7",
+)
+
+lazy val shared = crossProject(JSPlatform, JVMPlatform)
+  .crossType(CrossType.Pure)
+  .in(file("shared"))
+  .settings(commonSettings)
 
 lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
 
 lazy val client = (project in file("client"))
+  .settings(commonSettings)
   .settings(
-    scalaVersion := scalaV,
     scalaJSUseMainModuleInitializer := true,
     scalaJSUseMainModuleInitializer in Test := false,
     libraryDependencies ++= Seq(
       guice,
-      "org.scala-js" %%% "scalajs-dom" % "0.9.4"
+      "org.scala-js" %%% "scalajs-dom" % "0.9.6"
     )
   )
   .enablePlugins(ScalaJSPlugin, ScalaJSWeb, WorkbenchSplicePlugin)
@@ -26,8 +31,8 @@ lazy val client = (project in file("client"))
 lazy val webpackBuild = taskKey[Unit]("Webpack build for the application")
 
 lazy val server = (project in file("server"))
+  .settings(commonSettings)
   .settings(
-    scalaVersion := scalaV,
     scalaJSProjects := Seq(client),
     pipelineStages in Assets := Seq(scalaJSPipeline),
     pipelineStages := Seq(gzip),
