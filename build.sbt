@@ -1,6 +1,6 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 
-lazy val scalaV = "2.12.6"
+lazy val scalaV = "2.12.7"
 lazy val circeVersion = "0.10.0"
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
