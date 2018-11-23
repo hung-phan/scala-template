@@ -18,8 +18,6 @@ lazy val sharedJs = shared.js
 lazy val client = (project in file("client"))
   .settings(commonSettings)
   .settings(
-    scalaJSUseMainModuleInitializer := true,
-    scalaJSUseMainModuleInitializer in Test := false,
     libraryDependencies ++= Seq(
       guice,
       "org.scala-js" %%% "scalajs-dom" % "0.9.6"

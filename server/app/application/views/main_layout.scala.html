@@ -1,4 +1,4 @@
-@(title: String)(content: Html)(implicit viewHelpers: application.helpers.ViewHelpers)
+@(title: String, styles: Html = Html(""), scripts: Html = Html(""))(content: Html)(implicit viewHelpers: application.helpers.ViewHelpers)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,7 @@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <link rel="manifest" href="@routes.Assets.at("manifest/main.json")">
         @viewHelpers.webpackCssAsset("app.css")
+        @styles
     </head>
     <body>
         @content
@@ -29,5 +30,6 @@
             <script type="application/javascript"
             src="@viewHelpers.config.underlying.getString("workbench_js")"></script>
         }
+        @scripts
     </body>
 </html>

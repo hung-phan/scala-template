@@ -2,7 +2,11 @@
 
 @import application.views.html.main_layout
 
-@main_layout("Application") {
+@scripts = {
+    <script type="text/javascript">window.example.ScalaJSExample();</script>
+}
+
+@main_layout("Application", scripts=scripts) {
     <div>Server data: @message</div>
     <div id="app"></div>
 }
