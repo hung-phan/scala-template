@@ -16,9 +16,9 @@
     </head>
     <body>
         @content
+        @viewHelpers.workbench()
         @viewHelpers.webpackManifest()
         @viewHelpers.webpackRuntime()
-        @viewHelpers.workbench()
         @viewHelpers.webpackJsAsset("app.js")
         @scalajs.html.scripts(
             "client",
