@@ -12,12 +12,18 @@
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")" />
         <link rel="manifest" href="@routes.Assets.at("manifest/main.json")" />
+        @if(viewHelpers.env.mode == play.api.Mode.Prod) {
+            @viewHelpers.webpackCssAsset("vendor.css")
+        }
         @styles
     </head>
     <body>
         @content
         @viewHelpers.webpackManifest()
         @viewHelpers.webpackRuntime()
+        @if(viewHelpers.env.mode == play.api.Mode.Prod) {
+            @viewHelpers.webpackJsAsset("vendor.js")
+        }
         @viewHelpers.webpackJsAsset("app.js")
         @viewHelpers.workbench()
         @scalajs.html.scripts(
