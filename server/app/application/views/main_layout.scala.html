@@ -18,11 +18,7 @@
         @content
         @viewHelpers.webpackManifest()
         @viewHelpers.webpackRuntime()
-
-        @if(viewHelpers.env.mode == play.api.Mode.Dev) {
-            <script type="text/javascript"
-            src="@viewHelpers.config.underlying.getString("workbench_js")"></script>
-        }
+        @viewHelpers.workbench()
         @viewHelpers.webpackJsAsset("app.js")
         @scalajs.html.scripts(
             "client",
