@@ -1,7 +1,7 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
-lazy val circeVersion = "0.10.0"
+lazy val circeVersion = "0.11.0"
 
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.7",
@@ -57,8 +57,7 @@ lazy val server = (project in file("server"))
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core",
       "io.circe" %% "circe-generic",
-      "io.circe" %% "circe-parser",
-      "io.circe" %% "circe-optics"
+      "io.circe" %% "circe-parser"
     ).map(_ % circeVersion),
     libraryDependencies ++= Seq(
       ws,
