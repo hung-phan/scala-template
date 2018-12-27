@@ -24,7 +24,7 @@
   "scripts": {
     "build": "nwb web build src/index.js --vendor --plugins sass,less",
     "clean": "nwb clean-app",
-    "start": "nwb web run src/index.js --vendor --port 8080 --plugins sass,less --reload",
+    "start": "nwb web run src/index.js --port 8080 --plugins sass,less --reload",
     "test": "nwb test",
     "test:coverage": "nwb test --coverage",
     "test:watch": "nwb test --server"
