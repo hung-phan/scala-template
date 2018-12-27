@@ -16,10 +16,10 @@
     </head>
     <body>
         @content
-        @viewHelpers.workbench()
         @viewHelpers.webpackManifest()
         @viewHelpers.webpackRuntime()
         @viewHelpers.webpackJsAsset("app.js")
+        @viewHelpers.workbench()
         @scalajs.html.scripts(
             "client",
             routes.Assets.at(_).toString,
