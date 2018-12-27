@@ -14,12 +14,11 @@ The application contains three directories:
 ### Requirements
 
 - [node](https://nodejs.org/en/)
-- [yarn](https://yarnpkg.com/)
 
 Install npm dependencies
 
 ```bash
-$ cd server/frontend && yarn # run this only once
+$ cd server/frontend && npm install # run this only once
 ```
 
 ### Development
