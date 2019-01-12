@@ -4,7 +4,7 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 lazy val circeVersion = "0.11.0"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.12.7",
+  scalaVersion := "2.12.8",
 )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
