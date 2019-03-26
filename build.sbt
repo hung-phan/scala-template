@@ -69,7 +69,7 @@ lazy val server = (project in file("server"))
       specs2 % Test
     ),
     // docker base
-    dockerBaseImage := "openjdk"
+    dockerBaseImage := "openjdk:12"
   )
   .enablePlugins(PlayScala)
   .dependsOn(sharedJvm)
