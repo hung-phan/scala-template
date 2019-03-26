@@ -1,7 +1,7 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
-lazy val circeVersion = "0.11.0"
+lazy val circeVersion = "0.11.1"
 
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.8",
@@ -23,7 +23,7 @@ lazy val client = (project in file("client"))
       "org.scala-js" %%% "scalajs-dom" % "0.9.6"
     )
   )
-  .enablePlugins(ScalaJSPlugin, ScalaJSWeb, WorkbenchSplicePlugin)
+  .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
   .dependsOn(sharedJs)
 
 lazy val webpackBuild = taskKey[Unit]("Webpack build for the application")

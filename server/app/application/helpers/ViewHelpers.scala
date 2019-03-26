@@ -34,16 +34,6 @@ class ViewHelpers @Inject()(val env: play.api.Environment,
     }
   }
 
-  def workbench(): Html = {
-    var htmlString = ""
-
-    if (env.mode == play.api.Mode.Dev) {
-      htmlString = s"<script type='text/javascript' src='${config.underlying.getString("workbench_js")}'></script>"
-    }
-
-    Html.apply(htmlString)
-  }
-
   def webpackJsAsset(name: String): Html = {
     var htmlString = ""
 
