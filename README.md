@@ -34,8 +34,8 @@ Run this to build all the assets using webpack bundler. You must see the profile
 replace application configuration with your environment configuration.
 
 ```bash
-$ sbt -Denv=Production webpackProTask
-$ sbt -Denv=Production docker:publishLocal # Replace docker:publishLocal with other built tasks on your demand
+$ sbt -Denv=prod webpackProTask
+$ sbt -Denv=prod docker:publishLocal # Replace docker:publishLocal with other built tasks on your demand
 ```
 
 To start it in local, run:

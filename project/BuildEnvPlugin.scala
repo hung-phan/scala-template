@@ -3,7 +3,6 @@ import sbt._
 import sbt.plugins.JvmPlugin
 
 object BuildEnvPlugin extends AutoPlugin {
-  import autoImport._
 
   override def trigger = AllRequirements
 
@@ -15,16 +14,17 @@ object BuildEnvPlugin extends AutoPlugin {
       val Production, Testing, Development = Value
     }
 
-    val buildEnv: SettingKey[BuildEnv.Value] = settingKey[BuildEnv.Value]("the current build environment")
+    val buildEnv = settingKey[BuildEnv.Value]("the current build environment")
   }
+  import autoImport._
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     buildEnv := {
       sys.props.get("env")
         .orElse(sys.env.get("BUILD_ENV"))
         .flatMap {
-          case "Production" => Some(BuildEnv.Production)
-          case "Testing" => Some(BuildEnv.Testing)
+          case "prod" => Some(BuildEnv.Production)
+          case "test" => Some(BuildEnv.Testing)
           case _ => Some(BuildEnv.Development)
         }
         .getOrElse(BuildEnv.Development)

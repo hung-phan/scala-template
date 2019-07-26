@@ -1,5 +1,5 @@
 import com.typesafe.sbt.packager.MappingsHelper._
-import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
+import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
 lazy val circeVersion = "0.11.1"
 
