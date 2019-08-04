@@ -28,6 +28,12 @@ $ sbt -Dconfig.file=server/conf/development.conf run
 $ cd server/frontend && npm run start # in separated terminal
 ```
 
+### Testing
+```bash
+$ docker-compose -f docker-compose.test.yml up -d
+$ sbt -Dconfig.file=server/conf/testing.conf test
+```
+
 ### Production
 
 Run this to build all the assets using webpack bundler. You must see the profile to know how to
