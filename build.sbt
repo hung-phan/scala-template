@@ -1,10 +1,10 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
-lazy val circeVersion = "0.11.1"
+lazy val circeVersion = "0.12.0-M4"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.12.8",
+  scalaVersion := "2.13.0",
 )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
@@ -20,7 +20,7 @@ lazy val client = (project in file("client"))
   .settings(
     libraryDependencies ++= Seq(
       guice,
-      "org.scala-js" %%% "scalajs-dom" % "0.9.6"
+      "org.scala-js" %%% "scalajs-dom" % "0.9.7"
     )
   )
   .enablePlugins(ScalaJSPlugin, ScalaJSWeb)

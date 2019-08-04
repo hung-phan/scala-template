@@ -3,10 +3,11 @@ package example
 import org.scalajs.dom
 import shared.SharedMessages
 
-import scala.scalajs.js.annotation.JSExportTopLevel
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
+@JSExportTopLevel("ScalaJSExample")
 object ScalaJSExample {
-  @JSExportTopLevel("example.ScalaJSExample")
+  @JSExport
   def main(): Unit = {
     dom.document.getElementById("app").textContent = s"Client data: ${SharedMessages.itWorks}"
   }
