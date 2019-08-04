@@ -72,7 +72,7 @@ lazy val server = (project in file("server"))
     dockerBaseImage := "openjdk:12"
   )
   .enablePlugins(PlayScala)
-  .dependsOn(sharedJvm)
+  .dependsOn(sharedJvm, client)
 
 // loads the server project at sbt startup
 onLoad in Global ~= (_ andThen ("project server" :: _))

@@ -31,7 +31,8 @@ $ cd server/frontend && npm run start # in separated terminal
 ### Testing
 ```bash
 $ docker-compose -f docker-compose.test.yml up -d
-$ sbt -Dconfig.file=server/conf/testing.conf test
+$ sbt -Dconfig.file=server/conf/testing.conf -Denv=test test
+$ docker-compose -f docker-compose.test.yml down
 ```
 
 ### Production
