@@ -6,13 +6,13 @@ import javax.inject.Inject
 import play.twirl.api.Html
 
 import scala.io.Source
-import scala.util.Try
+import scala.util.Using
 
 class ViewHelpers @Inject()(val env: play.api.Environment,
                             val config: play.api.Configuration) {
-  val manifestString: String = Try(
-    Source.fromFile(env.getFile("/manifest.json")).getLines.mkString
-  ).getOrElse("{}")
+  val manifestString: String = Using(
+    Source.fromFile(env.getFile("/manifest.json"))
+  ) { reader => reader.getLines().mkString }.getOrElse("{}")
 
   val manifest: Either[ParsingFailure, Json] = parse(manifestString)
 
