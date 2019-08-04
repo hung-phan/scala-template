@@ -62,10 +62,10 @@ lazy val server = (project in file("server"))
     libraryDependencies ++= Seq(
       ws,
       guice,
-      "com.typesafe.play" %% "play-slick" % "4.0.1",
-      "com.typesafe.play" %% "play-slick-evolutions" % "4.0.1",
-      "org.postgresql" % "postgresql" % "42.2.5",
-      "com.vmunier" %% "scalajs-scripts" % "1.1.2",
+      "com.typesafe.play" %% "play-slick" % "4.0.2",
+      "com.typesafe.play" %% "play-slick-evolutions" % "4.0.2",
+      "org.postgresql" % "postgresql" % "42.2.6",
+      "com.vmunier" %% "scalajs-scripts" % "1.1.3",
       specs2 % Test
     ),
     // docker base
