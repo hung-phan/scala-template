@@ -28,13 +28,6 @@ object BuildEnvPlugin extends AutoPlugin {
           case _ => Some(BuildEnv.Development)
         }
         .getOrElse(BuildEnv.Development)
-    },
-
-    onLoadMessage := {
-      val defaultMessage = onLoadMessage.value
-      val env = buildEnv.value
-      s"""|$defaultMessage
-          |Running in build environment: $env""".stripMargin
     }
   )
 }
