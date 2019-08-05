@@ -11,8 +11,10 @@ resolvers += Resolver.url(
 )(Resolver.ivyStylePatterns)
 
 // Sbt plugins
-addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.9")
-addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.0.0-M8")
+//addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.9")
+//addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.0.0-M8")
+addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.9-0.6")
+addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "0.6.28")
 addSbtPlugin("com.typesafe.play"  % "sbt-plugin"               % "2.7.3")
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.0")
 addSbtPlugin("com.timushev.sbt"   % "sbt-updates"              % "0.4.2")
