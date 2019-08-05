@@ -3,8 +3,10 @@ services:
   webapp:
     container_name: webapp
     image: server:0.1.0-SNAPSHOT # build by sbt docker
+    command: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     ports:
       - "9000:9000"
+      - "5005:5005"
     depends_on:
       - postgres
     links:
