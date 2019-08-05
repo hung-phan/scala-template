@@ -1,10 +1,10 @@
 sudo: required
 
 language: scala
-jdk: oraclejdk8
+jdk: openjdk12
 
 scala:
-  - 2.12.6
+  - 2.13.0
 
 before_install:
   - sudo service postgresql stop
