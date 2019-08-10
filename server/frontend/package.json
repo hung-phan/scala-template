@@ -20,7 +20,6 @@
   },
   "license": "MIT",
   "private": true,
-  "repository": "",
   "scripts": {
     "build": "nwb web build src/index.js --vendor --plugins sass,less",
     "clean": "nwb clean-app",
