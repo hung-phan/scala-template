@@ -1,7 +1,7 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
-lazy val circeVersion = "0.12.0-M4"
+lazy val circeVersion = "0.12.0-RC1"
 
 lazy val commonSettings = Seq(
   scalaVersion := "2.13.0",
@@ -65,7 +65,7 @@ lazy val server = (project in file("server"))
       "com.typesafe.play" %% "play-slick" % "4.0.2",
       "com.typesafe.play" %% "play-slick-evolutions" % "4.0.2",
       "org.postgresql" % "postgresql" % "42.2.6",
-      "com.vmunier" %% "scalajs-scripts" % "1.1.3",
+      "com.vmunier" %% "scalajs-scripts" % "1.1.4",
       specs2 % Test
     ),
     // docker base
