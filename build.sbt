@@ -1,10 +1,10 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
-lazy val circeVersion = "0.12.0-RC1"
+lazy val circeVersion = "0.12.3"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.13.0",
+  scalaVersion := "2.13.1",
 )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
@@ -64,7 +64,7 @@ lazy val server = (project in file("server"))
       guice,
       "com.typesafe.play" %% "play-slick" % "4.0.2",
       "com.typesafe.play" %% "play-slick-evolutions" % "4.0.2",
-      "org.postgresql" % "postgresql" % "42.2.6",
+      "org.postgresql" % "postgresql" % "42.2.8",
       "com.vmunier" %% "scalajs-scripts" % "1.1.4",
       specs2 % Test
     ),
