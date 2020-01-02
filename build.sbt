@@ -2,6 +2,7 @@ import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
 lazy val circeVersion = "0.12.3"
+lazy val playSlickVersion = "5.0.0"
 
 lazy val commonSettings = Seq(
   scalaVersion := "2.13.1",
@@ -62,8 +63,8 @@ lazy val server = (project in file("server"))
     libraryDependencies ++= Seq(
       ws,
       guice,
-      "com.typesafe.play" %% "play-slick" % "4.0.2",
-      "com.typesafe.play" %% "play-slick-evolutions" % "4.0.2",
+      "com.typesafe.play" %% "play-slick" % playSlickVersion,
+      "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
       "org.postgresql" % "postgresql" % "42.2.9",
       "com.vmunier" %% "scalajs-scripts" % "1.1.4",
       specs2 % Test
