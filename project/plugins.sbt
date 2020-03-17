@@ -15,7 +15,7 @@ resolvers += Resolver.url(
 //addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.0.0-M8")
 addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.9-0.6")
 addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "0.6.29")
-addSbtPlugin("com.typesafe.play"  % "sbt-plugin"               % "2.8.0")
+addSbtPlugin("com.typesafe.play"  % "sbt-plugin"               % "2.8.1")
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.1")
 addSbtPlugin("com.timushev.sbt"   % "sbt-updates"              % "0.5.0")
 addSbtPlugin("com.eed3si9n"       % "sbt-assembly"             % "0.14.10")
