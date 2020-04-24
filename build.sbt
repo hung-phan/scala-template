@@ -65,7 +65,7 @@ lazy val server = (project in file("server"))
       guice,
       "com.typesafe.play" %% "play-slick" % playSlickVersion,
       "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
-      "org.postgresql" % "postgresql" % "42.2.11",
+      "org.postgresql" % "postgresql" % "42.2.12",
       "com.vmunier" %% "scalajs-scripts" % "1.1.4",
       specs2 % Test
     ),

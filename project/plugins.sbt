@@ -2,7 +2,7 @@
 logLevel := Level.Warn
 
 // Resolvers
-resolvers += "spray repo" at "http://repo.spray.io"
+resolvers += "spray repo" at "https://repo.spray.io"
 
 resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/"
 
@@ -11,12 +11,10 @@ resolvers += Resolver.url(
 )(Resolver.ivyStylePatterns)
 
 // Sbt plugins
-//addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.9")
-//addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.0.0-M8")
-addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.9-0.6")
-addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "0.6.29")
+addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.11-0.6")
+addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "0.6.32")
 addSbtPlugin("com.typesafe.play"  % "sbt-plugin"               % "2.8.1")
-addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.1")
+addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.0.0")
 addSbtPlugin("com.timushev.sbt"   % "sbt-updates"              % "0.5.0")
 addSbtPlugin("com.eed3si9n"       % "sbt-assembly"             % "0.14.10")
 addSbtPlugin("com.typesafe.sbt"   % "sbt-gzip"                 % "1.0.2")
