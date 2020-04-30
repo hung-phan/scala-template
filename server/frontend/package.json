@@ -3,18 +3,18 @@
   "description": "Describe frontend here",
   "version": "1.0.0",
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.0"
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "nwb": "^0.23.0",
-    "nwb-less": "^0.7.1",
-    "nwb-sass": "^0.9.0",
-    "prettier": "^1.18.2",
-    "stylelint": "^11.1.1",
-    "stylelint-config-css-modules": "^1.5.0",
-    "stylelint-config-standard": "^19.0.0",
+    "nwb": "^0.24.5",
+    "nwb-less": "^0.8.0",
+    "nwb-sass": "^0.10.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.3",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-standard": "^20.0.0",
     "stylelint-webpack-plugin": "^1.0.3",
     "webpack-manifest-plugin": "^2.2.0"
   },
