@@ -2,6 +2,9 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = {
   type: "web-app",
+  devServer: {
+    sockPort: 8080
+  },
   webpack: {
     extra: {
       plugins: [
