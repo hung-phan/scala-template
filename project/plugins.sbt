@@ -2,6 +2,7 @@
 logLevel := Level.Warn
 
 // Resolvers
+
 resolvers += "spray repo" at "https://repo.spray.io"
 
 resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/"
@@ -11,10 +12,8 @@ resolvers += Resolver.url(
 )(Resolver.ivyStylePatterns)
 
 // Sbt plugins
-addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.0.11-0.6")
-addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "0.6.32")
-//addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.1.0")
-//addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.1.0")
+addSbtPlugin("com.vmunier"        % "sbt-web-scalajs"          % "1.1.0")
+addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.1.1")
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.0.0")
 addSbtPlugin("com.typesafe.play"  % "sbt-plugin"               % "2.8.2")
 addSbtPlugin("com.timushev.sbt"   % "sbt-updates"              % "0.5.0")

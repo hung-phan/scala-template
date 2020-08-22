@@ -5,7 +5,7 @@ lazy val circeVersion = "0.13.0"
 lazy val playSlickVersion = "5.0.0"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.13.1",
+  scalaVersion := "2.13.0",
 )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
@@ -21,7 +21,7 @@ lazy val client = (project in file("client"))
   .settings(
     libraryDependencies ++= Seq(
       guice,
-      "org.scala-js" %%% "scalajs-dom" % "0.9.7"
+      "org.scala-js" %%% "scalajs-dom" % "1.1.0"
     )
   )
   .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
