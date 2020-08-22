@@ -42,7 +42,7 @@ replace application configuration with your environment configuration.
 
 ```bash
 $ sbt -Denv=prod webpackProTask
-$ sbt -Denv=prod docker:publishLocal # Replace docker:publishLocal with other built tasks on your demand
+$ sbt -Denv=prod 'set scalaJSStage in Global := FullOptStage' docker:publishLocal # Replace docker:publishLocal with other built tasks on your demand
 ```
 
 To start it in local, run:
