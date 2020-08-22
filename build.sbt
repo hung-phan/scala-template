@@ -5,7 +5,7 @@ lazy val circeVersion = "0.13.0"
 lazy val playSlickVersion = "5.0.0"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.13.0",
+  scalaVersion := "2.13.3",
 )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
@@ -65,7 +65,7 @@ lazy val server = (project in file("server"))
       guice,
       "com.typesafe.play" %% "play-slick" % playSlickVersion,
       "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
-      "org.postgresql" % "postgresql" % "42.2.14",
+      "org.postgresql" % "postgresql" % "42.2.16",
       "com.vmunier" %% "scalajs-scripts" % "1.1.4",
       specs2 % Test
     ),
