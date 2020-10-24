@@ -3,7 +3,7 @@
   "description": "Describe frontend here",
   "version": "1.0.0",
   "dependencies": {
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
   },
@@ -11,11 +11,11 @@
     "nwb": "^0.25.2",
     "nwb-less": "^0.9.0",
     "nwb-sass": "^0.10.0",
-    "prettier": "^2.0.5",
-    "stylelint": "^13.3.3",
+    "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-webpack-plugin": "^2.1.0",
+    "stylelint-webpack-plugin": "^2.1.1",
     "webpack-manifest-plugin": "^2.2.0"
   },
   "license": "MIT",
