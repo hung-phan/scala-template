@@ -25,7 +25,7 @@ class TodosRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
   def insert(todo: Seq[Todo]): Future[Unit] = db.run(todos ++= todo).map(_ => ())
 
   private class TodosTable(tag: Tag) extends Table[Todo](tag, "todos") {
-    def * : ProvenShape[Todo] = (text, complete, id.?) <> (Todo.tupled, Todo.unapply)
+    def * : ProvenShape[Todo] = (text, complete, id.?).mapTo[Todo]
 
     def text: Rep[String] = column[String]("text")
 
