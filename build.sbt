@@ -5,7 +5,7 @@ lazy val circeVersion = "0.13.0"
 lazy val playSlickVersion = "5.0.0"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.13.3",
+  scalaVersion := "2.13.4",
 )
 
 lazy val shared = crossProject(JSPlatform, JVMPlatform)
