@@ -1,7 +1,7 @@
 import com.typesafe.sbt.packager.MappingsHelper._
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
-lazy val circeVersion = "0.13.0"
+lazy val circeVersion = "0.14.1"
 lazy val playSlickVersion = "5.0.0"
 
 lazy val commonSettings = Seq(
@@ -33,10 +33,10 @@ lazy val server = (project in file("server"))
   .settings(commonSettings)
   .settings(
     scalaJSProjects := Seq(client),
-    pipelineStages in Assets := Seq(scalaJSPipeline),
+    Assets / pipelineStages := Seq(scalaJSPipeline),
     pipelineStages := Seq(gzip),
     // triggers scalaJSPipeline when using compile or continuous compilation
-    compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
+    Compile / compile := ((Compile / compile) dependsOn scalaJSPipeline).value,
     Webpack.webpackDevTask := {
       Webpack.runDev(baseDirectory.value / "frontend")
     },
@@ -45,15 +45,15 @@ lazy val server = (project in file("server"))
     },
     dist := (dist dependsOn Webpack.webpackProTask).value,
     stage := (stage dependsOn Webpack.webpackProTask).value,
-    unmanagedResourceDirectories in Assets += (baseDirectory.value / "frontend" / "dist"),
-    mappings in Universal ++= directory(baseDirectory.value / "frontend" / "dist" / "manifest.json"),
-    mappings in Universal += {
+    Assets / unmanagedResourceDirectories += (baseDirectory.value / "frontend" / "dist"),
+    Universal / mappings ++= directory(baseDirectory.value / "frontend" / "dist" / "manifest.json"),
+    Universal / mappings += {
       val confFile = buildEnv.value match {
         case BuildEnv.Production => "production.conf"
         case BuildEnv.Testing => "testing.conf"
         case _ => "development.conf"
       }
-      ((resourceDirectory in Compile).value / confFile) -> "conf/application.conf"
+      ((Compile / resourceDirectory).value / confFile) -> "conf/application.conf"
     },
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core",
@@ -65,8 +65,8 @@ lazy val server = (project in file("server"))
       guice,
       "com.typesafe.play" %% "play-slick" % playSlickVersion,
       "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
-      "org.postgresql" % "postgresql" % "42.2.18",
-      "com.vmunier" %% "scalajs-scripts" % "1.1.4",
+      "org.postgresql" % "postgresql" % "42.2.23",
+      "com.vmunier" %% "scalajs-scripts" % "1.2.0",
       specs2 % Test
     ),
     // docker base
